@@ -1,0 +1,42 @@
+name: 'Kestra Deploy Action'
+description: 'Create, update or delete a list of resources from a folder recursively'
+inputs:
+  namespace:
+    description: 'Namespace to update'
+    required: true
+  directory:
+    description: 'Folder containing your resources'
+    required: true
+  resource:
+    description: 'Resource you want to update in your namespace, can be "flow" or "template"'
+    required: false
+    type: choice
+    options:
+      - flow
+      - template
+    default: flow
+  server:
+    description: 'URL of your Kestra server'
+    required: true
+  user:
+    description: 'User for the basic auth'
+    required: false
+  password:
+    description: 'Password for the basic auth'
+    required: false
+  delete:
+    description: 'If resource not found in directory should be deleted from the namespace'
+    required: false
+    type: boolean
+    default: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.namespace }}
+    - ${{ inputs.directory }}
+    - ${{ inputs.resource }}
+    - ${{ inputs.server }}
+    - ${{ inputs.user }}
+    - ${{ inputs.password }}
+    - ${{ inputs.delete }}
