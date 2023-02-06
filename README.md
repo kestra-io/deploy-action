@@ -1,11 +1,11 @@
- # Kestra Deploy Action
+# Deploy Action
 
 Official GitHub Action to create CI/CD pipelines that deploys [Flows](https://kestra.io/docs/concepts/flows.html)
 or [Templates](https://kestra.io/docs/developer-guide/templates/) to your Kestra server.
 
 This action should be used within a workflow that runs only on your <code>main</code> branch.
 <br/>Only one namespace can be specified in each <code>Kestra Deploy Action</code> so you may need to
-reuse the action for each namespace. 
+reuse the action for each namespace.
 
 The Action version is based on the Kestra Version. Only Kestra v0.6.1+ is supported.
 
@@ -33,7 +33,7 @@ templates are created.**
 |---------------|--------------------|---------|----------------------------------------------------------------------------|
 | ``namespace`` | :heavy_check_mark: |         | Namespace to update                                                        |
 | ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                           |
-| ``resource``  | :x:                | flow    | Resource you want to update in your namespace, can be `flow` or `template` |
+| ``resource``  | :x:                |         | Resource you want to update in your namespace, can be `flow` or `template` |
 | ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                  |
 | ``user``      | :x:                |         | User for the basic auth                                                    |
 | ``password``  | :x:                |         | Password for the basic auth                                                |
@@ -50,9 +50,10 @@ Example with `Flows`
 
 ```yaml
       - name: flow update namespace action
-        uses: actions/kestra-deploy-action@v0.6.1
+        uses: actions/kestra-deploy-action@develop
         with:
           namespace: io.kestra.namespace
+          resource: flow
           directory: ./kestra/flows/namespace_dedicate_folder
           server: https:/kestra.io
 ```
@@ -61,7 +62,7 @@ Example with `Templates`
 
 ```yaml
       - name: template update namespace action
-        uses: actions/kestra-deploy-action@v0.6.1
+        uses: actions/kestra-deploy-action@develop
         with:
           namespace: io.kestra.namespace
           resource: template

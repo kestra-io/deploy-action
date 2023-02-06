@@ -1,4 +1,4 @@
-name: 'Kestra Deploy Action'
+name: 'Deploy Action'
 description: 'Create, update or delete a list of resources from a folder recursively'
 inputs:
   namespace:
@@ -14,7 +14,6 @@ inputs:
     options:
       - flow
       - template
-    default: flow
   server:
     description: 'URL of your Kestra server'
     required: true
