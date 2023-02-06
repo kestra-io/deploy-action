@@ -5,8 +5,9 @@ or [Templates](https://kestra.io/docs/developer-guide/templates/) to your Kestra
 
 This action should be used within a workflow that runs only on your <code>main</code> branch.
 <br/>Only one namespace can be specified in each <code>Kestra Deploy Action</code> so you may need to
-reuse the action for each namespace. The Action version is based on the Kestra Version. Only Kestra
-v0.6.1+ is supported.
+reuse the action for each namespace. 
+
+The Action version is based on the Kestra Version. Only Kestra v0.6.1+ is supported.
 
 ## What does the action do ?
 
@@ -15,7 +16,7 @@ v0.6.1+ is supported.
     * **Create**, if the resource does not exist.
     * **Update**, if the resource exist.
     * **Delete**, if the resource exist but the file does not exist anymore.
-        * **Optional**, you can disable the deletion of the `Flow` by the CI.
+        * **Optional**, you can disable the deletion of the `Flow` by the Action.
 * Log each resource updated, included deleted one.
 
 ## Usage
