@@ -33,7 +33,7 @@ templates are created.**
 |---------------|--------------------|---------|----------------------------------------------------------------------------|
 | ``namespace`` | :heavy_check_mark: |         | Namespace to update                                                        |
 | ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                           |
-| ``resource``  | :x:                |         | Resource you want to update in your namespace, can be `flow` or `template` |
+| ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be `flow` or `template` |
 | ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                  |
 | ``user``      | :x:                |         | User for the basic auth                                                    |
 | ``password``  | :x:                |         | Password for the basic auth                                                |

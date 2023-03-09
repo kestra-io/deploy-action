@@ -12,7 +12,7 @@ inputs:
     required: true
   resource:
     description: 'Resource you want to update in your namespace, can be "flow" or "template"'
-    required: false
+    required: true
     type: choice
     options:
       - flow
