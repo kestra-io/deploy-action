@@ -27,7 +27,7 @@ Also, note that this GitHub Action supports flows built with Kestra v0.6.1+.
 
 ## What does the action do ?
 
-It takes a `directory` as an input argument, which indicates where you store your `Flow` **or** `Template` YAML files.
+It takes a `directory` as an input argument, indicating the directory within your repository where your `Flow` or `Template` YAML files are stored.
 
 For each resource, the following outcomes are possible:
   * **Create** a flow or a template resource, if the resource does not exist.
