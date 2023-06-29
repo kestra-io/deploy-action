@@ -30,7 +30,7 @@ inputs:
     description: 'If resource not found in directory should be deleted from the namespace'
     required: false
     type: boolean
-    default: true
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
