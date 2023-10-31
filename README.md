@@ -1,7 +1,7 @@
 # Deploy Action
 
-Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/concepts/flows.html)
-or [Templates](https://kestra.io/docs/developer-guide/templates/) to your Kestra server.
+Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/concepts/flows.html), [Templates](https://kestra.io/docs/developer-guide/templates/) or Namespace Files to 
+your Kestra server.
 
 This action should be used within a workflow that runs only on your <code>main</code> branch.
 
@@ -41,7 +41,6 @@ The action logs all these outcomes by specifying which resources got updated, ad
 
 Note that the action can NOT update multiple namespaces at the same time. We recommend grouping your `Flows` and
 `Templates` into subdirectories indicating a specific namespace. For the example shown above, your directory structure could look as follows:
-
 ```bash
 .
 ├── flows
@@ -57,13 +56,31 @@ Note that the action can NOT update multiple namespaces at the same time. We rec
 Also, you should always deploy your `Templates` before your `Flows`, to avoid running before their
 templates are created.
 
+Namespace files should also be deployed before the flows to prevent a flow depending on one of these file runong before 
+the file exists.
+
+## `.kestraignore` file
+Note that when using `namespace_files` resource type you can add a special dot file `.kestraignore` to ignore some file, folder or patterns.
+
+This file support classic [GitIgnore syntax](https://git-scm.com/docs/gitignore).
+
+### Example
+Example of `.kestraignore` file (works the same way as `.gitignore`):
+```gitignore
+flows/
+Dockerfile
+docker-compose.yml
+*.md
+```
+This example will skip all flows, markdown files, and Docker-related files from being deployed.
+
 ### Inputs
 
 | Inputs        | Required           | Default | Description                                                                                                                                                         |
 |---------------|--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ``namespace`` | :heavy_check_mark: |         | Namespace containing your flows and templates                                                                                                                       |
 | ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                                                                                                                    |
-| ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow` or `template`                                                                                   |
+| ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow`,`template` or `namespace_files`                                                      |
 | ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                                                                                                           |
 | ``user``      | :x:                |         | User name of your Kestra server                                                                                                                                     |
 | ``password``  | :x:                |         | Password of your Kestra server                                                                                                                                      |
@@ -97,6 +114,18 @@ Example with `Templates` resources:
           namespace: io.kestra.namespace
           resource: template
           directory: ./templates/namespace_dedicated_folder
+          server: https:/kestra.io
+```
+
+Example with `namespace_file` resources:
+
+```yaml
+      - name: template update namespace action
+        uses: kestra-io/deploy-action@develop
+        with:
+          namespace: io.kestra.namespace
+          resource: namespace_file
+          directory: ./files/namespace_dedicated_folder
           server: https:/kestra.io
 ```
 
