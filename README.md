@@ -59,15 +59,16 @@ templates are created.
 
 ### Inputs
 
-| Inputs        | Required           | Default | Description                                                                |
-|---------------|--------------------|---------|----------------------------------------------------------------------------|
-| ``namespace`` | :heavy_check_mark: |         | Namespace containing your flows and templates                              |
-| ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                           |
-| ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow` or `template` |
-| ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                  |
-| ``user``      | :x:                |         | User name of your Kestra server                                                    |
-| ``password``  | :x:                |         | Password of your Kestra server                                                |
-| ``delete``    | :x:                | true    | `Flows` found in Kestra server, but no longer existing in a specified directory, will be deleted by default. Set this to `false` if you want to avoid that behavior     |
+| Inputs        | Required           | Default | Description                                                                                                                                                         |
+|---------------|--------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ``namespace`` | :heavy_check_mark: |         | Namespace containing your flows and templates                                                                                                                       |
+| ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                                                                                                                    |
+| ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow` or `template`                                                                                   |
+| ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                                                                                                           |
+| ``user``      | :x:                |         | User name of your Kestra server                                                                                                                                     |
+| ``password``  | :x:                |         | Password of your Kestra server                                                                                                                                      |
+| ``delete``    | :x:                | true    | `Flows` found in Kestra server, but no longer existing in a specified directory, will be deleted by default. Set this to `false` if you want to avoid that behavior |
+| ``tenant``    | :x:                |         | Tenant identifier (EE only, when multi-tenancy is enabled)                                                                                                          |
 
 ### Auth
 
