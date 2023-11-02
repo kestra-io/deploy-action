@@ -17,6 +17,7 @@ inputs:
     options:
       - flow
       - template
+      - namespace_files
   server:
     description: 'URL of your Kestra server'
     required: true
