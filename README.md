@@ -1,7 +1,6 @@
 # Deploy Action
 
-Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/concepts/flows.html), [Templates](https://kestra.io/docs/developer-guide/templates/) or Namespace Files to 
-your Kestra server.
+Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/concepts/flows.html), [Templates](https://kestra.io/docs/developer-guide/templates/) or [Namespace Files](https://kestra.io/docs/developer-guide/namespace-files) to your Kestra server.
 
 This action should be used within a workflow that runs only on your <code>main</code> branch.
 
@@ -56,24 +55,18 @@ Note that the action can NOT update multiple namespaces at the same time. We rec
 Also, you should always deploy your `Templates` before your `Flows`, to avoid running before their
 templates are created.
 
-Namespace files should also be deployed before the flows to prevent a flow depending on one of these file runong before 
-the file exists.
+Namespace files should also be deployed before the flows to prevent a flow depending on one of these files before the file exists.
 
 ## `.kestraignore` file
-Note that when using `namespace_files` resource type you can add a special dot file `.kestraignore` to ignore some file, folder or patterns.
-
-This file support classic [GitIgnore syntax](https://git-scm.com/docs/gitignore).
+Note that when using the `namespace_files` resource type, you can add a special file called `.kestraignore` to ignore some files and folders using regular expression patterns that follow the [.gitIgnore](https://git-scm.com/docs/gitignore) syntax.
 
 ### Example
-Example of `.kestraignore` file (works the same way as `.gitignore`):
+Example of a `.kestraignore` file (which works exactly the same way as `.gitignore`):
 ```gitignore
 flows/
 Dockerfile
 docker-compose.yml
 *.md
-```
-This example will skip all flows, markdown files, and Docker-related files from being deployed.
-
 ### Inputs
 
 | Inputs        | Required           | Default | Description                                                                                                                                                         |
