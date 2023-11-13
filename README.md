@@ -62,11 +62,15 @@ Note that when using the `namespace_files` resource type, you can add a special 
 
 ### Example
 Example of a `.kestraignore` file (which works exactly the same way as `.gitignore`):
+
 ```gitignore
 flows/
 Dockerfile
 docker-compose.yml
 *.md
+```
+
+
 ### Inputs
 
 | Inputs        | Required           | Default | Description                                                                                                                                                         |
