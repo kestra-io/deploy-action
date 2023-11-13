@@ -10,6 +10,10 @@ inputs:
   directory:
     description: 'Folder containing your resources'
     required: true
+  to:
+    description: '(Namespace Files specific) Remote path to upload namespace files to'
+    required: false
+    default: /
   resource:
     description: 'Resource you want to update in your namespace, can be "flow" or "template"'
     required: true
@@ -41,6 +45,7 @@ runs:
   args:
     - ${{ inputs.namespace }}
     - ${{ inputs.directory }}
+    - ${{ inputs.to }}
     - ${{ inputs.resource }}
     - ${{ inputs.server }}
     - ${{ inputs.user }}
