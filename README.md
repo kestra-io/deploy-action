@@ -4,7 +4,7 @@ Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://k
 
 This action should be used within a workflow that runs only on your <code>main</code> branch.
 
-## Important notes ❗️
+## Important notes❗️
 
 Only **one namespace** can be specified in each <code>Kestra Deploy Action</code> so you may need to
 reuse the action for each namespace. Here is an example:
@@ -24,7 +24,7 @@ reuse the action for each namespace. Here is an example:
 
 Also, note that this GitHub Action supports flows built with Kestra v0.6.1+.
 
-## What does the action do ?
+## What does the action do?
 
 It takes a `directory` as an input argument, indicating the directory within your repository where your `Flow` or `Template` YAML files are stored.
 
@@ -79,6 +79,8 @@ docker-compose.yml
 | ``password``  | :x:                |         | Password of your Kestra server                                                                                                                                      |
 | ``delete``    | :x:                | true    | `Flows` found in Kestra server, but no longer existing in a specified directory, will be deleted by default. Set this to `false` if you want to avoid that behavior |
 | ``tenant``    | :x:                |         | Tenant identifier (EE only, when multi-tenancy is enabled)                                                                                                          |
+| ``to``    | :x:                |         | Remote path indicating where to upload namespace files to                                                                                                          |
+
 
 ### Auth
 
@@ -98,18 +100,6 @@ Example with `Flows` resources:
           server: https:/kestra.io
 ```
 
-Example with `Templates` resources:
-
-```yaml
-      - name: template update namespace action
-        uses: kestra-io/deploy-action@develop
-        with:
-          namespace: io.kestra.namespace
-          resource: template
-          directory: ./templates/namespace_dedicated_folder
-          server: https:/kestra.io
-```
-
 Example with `namespace_file` resources:
 
 ```yaml
@@ -121,6 +111,19 @@ Example with `namespace_file` resources:
           directory: ./files/namespace_dedicated_folder
           server: https:/kestra.io
 ```
+
+Example with `Templates` resources (deprecated):
+
+```yaml
+      - name: template update namespace action
+        uses: kestra-io/deploy-action@develop
+        with:
+          namespace: io.kestra.namespace
+          resource: template
+          directory: ./templates/namespace_dedicated_folder
+          server: https:/kestra.io
+```
+
 
 ## Full Example
 
