@@ -9,7 +9,7 @@ inputs:
     required: true
   directory:
     description: 'Folder containing your resources'
-    required: true
+    default: './'
   to:
     description: '(Namespace Files specific) Remote path to upload namespace files to'
     required: false
