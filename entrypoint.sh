@@ -18,8 +18,8 @@ if [[ $9 ]]; then
   tenant="--tenant=$9"
 fi
 
-if [[ $4 == 'namespace_files' ]]; then
-  /app/kestra namespace files update "$1" "$2" "$3" --server="$5" "$auth" $delete "$tenant"
+if [[ $4 == "namespace_files" ]]; then
+  /app/kestra namespace files update "$1" "$2" "$3" --server="$5" "$auth" $delete $tenant
 else
-  /app/kestra "$4" namespace update "$1" "$2" --server="$5" "$auth" $delete "$tenant"
+  /app/kestra "$4" namespace update "$1" "$2" --server="$5" "$auth" $delete $tenant
 fi
