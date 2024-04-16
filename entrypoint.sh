@@ -25,7 +25,7 @@ if [[ ${10} ]]; then
 fi
 
 if [[ $4 == "namespace_files" ]]; then
-  /app/kestra namespace files update "$1" "$2" "$3" --server="$5" "$auth" $delete $tenant $apiToken
+  /app/kestra namespace files update "$1" "$2" "$3" --server="$5" $auth $delete $tenant $apiToken
 else
-  /app/kestra "$4" namespace update "$1" "$2" --server="$5" "$auth" $delete $tenant $apiToken
+  /app/kestra "$4" namespace update "$1" "$2" --server="$5" $auth $delete $tenant $apiToken
 fi
