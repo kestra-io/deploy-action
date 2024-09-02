@@ -1,5 +1,1 @@
-FROM kestra/kestra:latest-full
-
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
+FROM kestra/kestra:v0.16.12-full
