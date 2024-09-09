@@ -11,12 +11,12 @@ reuse the action for each namespace. Here is an example:
 
 ```yaml
       - name: deploy-prod
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: prod
           directory: ./flows
       - name: deploy-prod-marketing
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: prod.marketing
           directory: ./flows/marketing
@@ -96,7 +96,7 @@ Example with `Flows` resources:
 
 ```yaml
       - name: flow update namespace action
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: io.kestra.namespace
           resource: flow
@@ -108,7 +108,7 @@ Example with `namespace_file` resources:
 
 ```yaml
       - name: template update namespace action
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: io.kestra.namespace
           resource: namespace_file
@@ -120,7 +120,7 @@ Example with `Templates` resources (deprecated):
 
 ```yaml
       - name: template update namespace action
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: io.kestra.namespace
           resource: template
@@ -143,7 +143,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: deploy
-        uses: kestra-io/deploy-action@develop
+        uses: kestra-io/deploy-action@master
         with:
           namespace: prod
           directory: ./flows
