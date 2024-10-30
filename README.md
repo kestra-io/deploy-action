@@ -1,8 +1,8 @@
 # Deploy Action
 
-Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/concepts/flows.html), [Templates](https://kestra.io/docs/developer-guide/templates/) or [Namespace Files](https://kestra.io/docs/developer-guide/namespace-files) to your Kestra server.
+Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/workflow-components/flow) or [Namespace Files](https://kestra.io/docs/concepts/namespace-files) to your Kestra server.
 
-This action should be used within a workflow that runs only on your <code>main</code> branch.
+This action should be used within a workflow that runs only on your `main` branch.
 
 ## Important notes❗️
 
@@ -58,7 +58,7 @@ templates are created.
 Namespace files should also be deployed before the flows to prevent a flow depending on one of these files before the file exists.
 
 ## `.kestraignore` file
-Note that when using the `namespace_files` resource type, you can add a special file called `.kestraignore` to ignore some files and folders using regular expression patterns that follow the [.gitIgnore](https://git-scm.com/docs/gitignore) syntax.
+Note that when using the `namespace_files` resource type, you can add a special file called `.kestraignore` to ignore some files and folders using regular expression patterns that follow the [.gitignore](https://git-scm.com/docs/gitignore) syntax.
 
 ### Example
 Example of a `.kestraignore` file (which works exactly the same way as `.gitignore`):
@@ -168,3 +168,4 @@ jobs:
   ...
 ```
 
+Read more in the documentation [here](https://kestra.io/docs/version-control-cicd/cicd/github-action).
