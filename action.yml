@@ -10,38 +10,24 @@ inputs:
   directory:
     description: 'Folder containing your resources'
     default: './'
-  to:
-    description: '(Namespace Files specific) Remote path to upload namespace files to'
-    default: "/"
-  resource:
-    description: 'Resource you want to update in your namespace, can be "flow" or "template"'
-    required: true
-    type: choice
-    options:
-      - flow
-      - template
-      - namespace_files
-  server:
-    description: 'URL of your Kestra server'
-    required: true
-  user:
-    description: 'User for the basic auth'
-    required: false
-  password:
-    description: 'Password for the basic auth'
-    required: false
+  override:
+    description: 'to override flows if they already exist or not'
+    default: 'false'
   delete:
     description: 'If resource not found in directory should be deleted from the namespace'
     required: false
     type: boolean
     default: false
-  tenant:
-    description: 'Tenant identifier (EE only, when multi-tenancy is enabled)'
-    default: "main"
+  server:
+    description: 'URL of your Kestra server'
     required: true
   apiToken:
     description: 'API Token (EE only)'
     required: false
+  tenant:
+    description: 'Tenant identifier (EE only, when multi-tenancy is enabled)'
+    default: "main"
+    required: true
 runs:
   using: "composite"
   steps:
@@ -55,4 +41,4 @@ runs:
     - name: Run CLI
       shell: bash
       run: |
-        ./kestra-cli flows deploy ${{inputs.directory}}/my-log-flow.yml --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}}
+        ./kestra-cli flows deploy ${{inputs.directory}}/my-log-flow.yml --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} --override ${{inputs.override}}
