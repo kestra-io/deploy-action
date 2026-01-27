@@ -48,7 +48,7 @@ runs:
     - name: Install CLI
       shell: bash
       # obviously this is overkill here, but later it will located be elsewhere
-      run: curl -L -o kestra-cli https://raw.githubusercontent.com/${{GITHUB_REPOSITORY}}/${{GITHUB_REF_NAME}}/kestra-cli
+      run: curl -L -o kestra-cli https://github.com/kestra-io/deploy-action/raw/refs/heads/v2-with-cli/kestra-cli
 
     - name: Run CLI
       shell: bash
