@@ -41,8 +41,8 @@ runs:
     - name: Run CLI
       shell: bash
       run: |
-        OPTS="--verbose "
+        OPTS="--verbose"
         if [ "${{inputs.override}}" = "true" ]; then
-          OPTS="--override "
+          OPTS="$OPTS --override"
         fi
         ./kestra-cli flows deploy ${{inputs.directory}}/my-log-flow.yml --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
