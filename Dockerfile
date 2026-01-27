@@ -1,5 +1,8 @@
-FROM kestra/kestra:latest
+FROM scratch
 
-COPY entrypoint.sh /entrypoint.sh
+# Copy the kestra CLI binary
+COPY kestra-cli /kestra
 
-ENTRYPOINT ["/entrypoint.sh"]
+# Set the CLI as the entrypoint
+ENTRYPOINT ["/kestra"]
+
