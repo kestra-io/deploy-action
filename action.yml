@@ -55,4 +55,4 @@ runs:
     - name: Run CLI
       shell: bash
       run: |
-        ./kestra-cli namespaces list company --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}}
+        ./kestra-cli flows deploy ${{inputs.directory}}/my-log-flow.yml --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}}
