@@ -4,19 +4,15 @@ branding:
   icon: 'upload-cloud'
   color: 'blue'
 inputs:
-  namespace:
-    description: 'Namespace to update'
-    required: false
   directory:
     description: 'Folder containing your resources'
     default: './'
+  namespace:
+    description: 'force a Namespace to deploy Flows to'
+    required: false
   override:
     description: 'to override flows if they already exist or not'
     default: 'false'
-  delete:
-    description: 'If resource not found in directory should be deleted from the namespace'
-    required: false
-    default: "false"
   server:
     description: 'URL of your Kestra server'
     required: true
