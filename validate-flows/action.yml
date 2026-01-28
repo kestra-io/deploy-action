@@ -1,0 +1,37 @@
+name: 'Kestra Deploy Flows Action'
+description: 'Create, update or delete a list of Flows from a folder recursively'
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'
+inputs:
+  namespace:
+    description: 'Namespace to update'
+    required: true
+  directory:
+    description: 'Folder containing your resources'
+    default: './'
+  server:
+    description: 'URL of your Kestra server'
+    required: true
+  apiToken:
+    description: 'API Token (EE only)'
+    required: false
+  tenant:
+    description: 'Tenant identifier (EE only, when multi-tenancy is enabled)'
+    default: "main"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Install CLI
+      shell: bash
+      # obviously this is overkill here, but later it will located be elsewhere
+      run: |
+        curl -L -o kestra-cli https://github.com/kestra-io/deploy-action/raw/refs/heads/v2-with-cli/kestra-cli
+        chmod +x kestra-cli
+
+    - name: Run CLI
+      shell: bash
+      run: |
+        OPTS=""
+        ./kestra-cli flows validate ${{inputs.directory}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
