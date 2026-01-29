@@ -4,9 +4,6 @@ branding:
   icon: 'upload-cloud'
   color: 'blue'
 inputs:
-  namespace:
-    description: 'Namespace to update'
-    required: true
   directory:
     description: 'Folder containing your resources'
     default: './'
