@@ -28,10 +28,10 @@ runs:
   steps:
     - name: Install CLI
       shell: bash
-      # obviously this is overkill here, but later it will located be elsewhere
+      # TODO obviously this is overkill here, but later it will located be elsewhere
       run: |
-        curl -L -o kestra-cli https://github.com/kestra-io/deploy-action/raw/refs/heads/v2-with-cli/kestra-cli
-        chmod +x kestra-cli
+        curl -L -o kestractl https://github.com/kestra-io/deploy-action/raw/refs/heads/v2-with-cli/kestractl
+        chmod +x kestractl
 
     - name: Run CLI
       shell: bash
@@ -43,4 +43,5 @@ runs:
         if [ "${{inputs.override}}" = "true" ]; then
           OPTS="$OPTS --override"
         fi
-        ./kestra-cli flows deploy ${{inputs.directory}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
+        ./kestractl flows deploy ${{inputs.directory}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
+# TODO: basic auth
