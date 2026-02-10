@@ -8,9 +8,8 @@ inputs:
     description: 'path to your file or directory containing your files'
     default: './'
   namespacePath:
-    description: 'remote Namespace path to deploy your files to'
+    description: 'remote Namespace path to deploy your files to (if localPath is a file, then namespacePath should be a file too)'
     required: true
-    default: 'resources'
   namespace:
     description: 'Namespace to deploy files to'
     required: true
