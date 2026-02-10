@@ -13,7 +13,7 @@ inputs:
   apiToken:
     description: 'API Token (EE only)'
     required: false
-  username:
+  user:
     description: 'basic auth username'
     required: false
   password:
@@ -39,7 +39,7 @@ runs:
         OPTS=""
         if [ -n "${{inputs.apiToken}}" ]; then
           OPTS="$OPTS --token ${{inputs.apiToken}}"
-        elif [ -n "${{inputs.username}}" ] && [ -n "${{inputs.password}}" ]; then
-          OPTS="$OPTS --user ${{inputs.username}} --password ${{inputs.password}}"
+        elif [ -n "${{inputs.user}}" ] && [ -n "${{inputs.password}}" ]; then
+          OPTS="$OPTS --user ${{inputs.user}} --password ${{inputs.password}}"
         fi
         ./kestractl flows validate ${{inputs.directory}} --host ${{inputs.server}} --tenant ${{inputs.tenant}} $OPTS

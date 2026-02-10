@@ -80,7 +80,7 @@ docker-compose.yml
 | ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow`,`template` or `namespace_files`                                                      |
 | ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                                                                                                           |
 | ``apiToken``  | :x:                |         | API Token (EE only)                                                                                                                                                 |
-| ``username``  | :x:                |         | Basic auth username                                                                                                                                                 |
+| ``user``      | :x:                |         | Basic auth username                                                                                                                                                 |
 | ``password``  | :x:                |         | Basic auth password                                                                                                                                                 |
 | ``delete``    | :x:                | true    | `Flows` found in Kestra server, but no longer existing in a specified directory, will be deleted by default. Set this to `false` if you want to avoid that behavior |
 | ``tenant``    | :x:                |         | Tenant identifier (EE only, when multi-tenancy is enabled)                                                                                                          |
@@ -89,7 +89,7 @@ docker-compose.yml
 
 ### Auth
 
-Depending on your Kestra edition, you can authenticate with `apiToken` (EE only) or `username` and `password`.
+Depending on your Kestra edition, you can authenticate with `apiToken` (EE only) or `user` and `password`.
 
 ### Example
 
@@ -150,7 +150,7 @@ jobs:
           directory: ./flows
           resource: flow
           server: ${{secrets.KESTRA_HOST}}
-          username: ${{secrets.KESTRA_USER}}
+          user: ${{secrets.KESTRA_USER}}
           password: ${{secrets.KESTRA_PASSWORD}}
           delete: false
 ```
