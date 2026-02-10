@@ -9,7 +9,8 @@ inputs:
     default: './'
   namespacePath:
     description: 'remote Namespace path to deploy your files to'
-    required: false
+    required: true
+    default: 'resources'
   namespace:
     description: 'Namespace to deploy files to'
     required: true
