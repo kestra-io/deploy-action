@@ -1,5 +1,5 @@
-name: 'Kestra Deploy Flows Action'
-description: 'Create, update or delete a list of Flows from a folder recursively'
+name: 'Kestra Validate Flows Action'
+description: 'Validate a list of Flows from a folder recursively'
 branding:
   icon: 'upload-cloud'
   color: 'blue'

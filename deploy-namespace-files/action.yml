@@ -1,17 +1,20 @@
-name: 'Kestra Deploy Flows Action'
-description: 'Create, update or delete a list of Flows from a folder recursively'
+name: 'Kestra Deploy Namespace Files Action'
+description: 'Deploy Namespace Files from a folder'
 branding:
   icon: 'upload-cloud'
   color: 'blue'
 inputs:
-  directory:
-    description: 'Folder containing your resources'
+  localPath:
+    description: 'path to your file or directory containing your files'
     default: './'
-  namespace:
-    description: 'force a Namespace to deploy Flows to'
+  namespacePath:
+    description: 'remote Namespace path to deploy your files to'
     required: false
+  namespace:
+    description: 'Namespace to deploy files to'
+    required: true
   override:
-    description: 'to override flows if they already exist or not'
+    description: 'to override files if they already exist or not'
     default: 'false'
   server:
     description: 'URL of your Kestra server'
@@ -37,11 +40,11 @@ runs:
       shell: bash
       run: |
         OPTS=""
-        if [ -n "${{inputs.namespace}}" ]; then
-          OPTS="$OPTS --namespace ${{inputs.namespace}}"
+        if [ -n "${{inputs.namespacePath}}" ]; then
+          OPTS="$OPTS --path ${{inputs.namespacePath}}"
         fi
         if [ "${{inputs.override}}" = "true" ]; then
           OPTS="$OPTS --override"
         fi
-        ./kestractl flows deploy ${{inputs.directory}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
+        ./kestractl nsfiles upload ${{inputs.namespace}} ${{inputs.localPath}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
 # TODO: basic auth
