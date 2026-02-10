@@ -79,8 +79,9 @@ docker-compose.yml
 | ``directory`` | :heavy_check_mark: |         | Folder containing your resources                                                                                                                                    |
 | ``resource``  | :heavy_check_mark: |         | Resource you want to update in your namespace, can be either `flow`,`template` or `namespace_files`                                                      |
 | ``server``    | :heavy_check_mark: |         | URL of your Kestra server                                                                                                                                           |
-| ``user``      | :x:                |         | User name of your Kestra server                                                                                                                                     |
-| ``password``  | :x:                |         | Password of your Kestra server                                                                                                                                      |
+| ``apiToken``  | :x:                |         | API Token (EE only)                                                                                                                                                 |
+| ``username``  | :x:                |         | Basic auth username                                                                                                                                                 |
+| ``password``  | :x:                |         | Basic auth password                                                                                                                                                 |
 | ``delete``    | :x:                | true    | `Flows` found in Kestra server, but no longer existing in a specified directory, will be deleted by default. Set this to `false` if you want to avoid that behavior |
 | ``tenant``    | :x:                |         | Tenant identifier (EE only, when multi-tenancy is enabled)                                                                                                          |
 | ``to``    | :x:                |         | Remote path indicating where to upload namespace files to                                                                                                          |
@@ -88,7 +89,7 @@ docker-compose.yml
 
 ### Auth
 
-Depending on your Kestra edition, you may need to include a `user` and `password` to authenticate the action with your Kestra server.
+Depending on your Kestra edition, you can authenticate with `apiToken` (EE only) or `username` and `password`.
 
 ### Example
 
@@ -149,12 +150,12 @@ jobs:
           directory: ./flows
           resource: flow
           server: ${{secrets.KESTRA_HOST}}
-          user: ${{secrets.KESTRA_USER}}
+          username: ${{secrets.KESTRA_USER}}
           password: ${{secrets.KESTRA_PASSWORD}}
           delete: false
 ```
 
-This setup also assumes that you stored the host name, user name and password as Actions secrets. 
+This setup also assumes that you stored the host name, username, and password as Actions secrets. 
 
 Finally, instead of only running this workflow manually, you can configure it to be triggered upon push to the main branch:
 

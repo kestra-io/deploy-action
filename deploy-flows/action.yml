@@ -19,6 +19,12 @@ inputs:
   apiToken:
     description: 'API Token (EE only)'
     required: false
+  username:
+    description: 'basic auth username'
+    required: false
+  password:
+    description: 'basic auth password'
+    required: false
   tenant:
     description: 'Tenant identifier (EE only, when multi-tenancy is enabled)'
     default: "main"
@@ -43,5 +49,9 @@ runs:
         if [ "${{inputs.override}}" = "true" ]; then
           OPTS="$OPTS --override"
         fi
-        ./kestractl flows deploy ${{inputs.directory}} --host ${{inputs.server}} --token ${{inputs.apiToken}} --tenant ${{inputs.tenant}} $OPTS
-# TODO: basic auth
+        if [ -n "${{inputs.apiToken}}" ]; then
+          OPTS="$OPTS --token ${{inputs.apiToken}}"
+        elif [ -n "${{inputs.username}}" ] && [ -n "${{inputs.password}}" ]; then
+          OPTS="$OPTS --user ${{inputs.username}} --password ${{inputs.password}}"
+        fi
+        ./kestractl flows deploy ${{inputs.directory}} --host ${{inputs.server}} --tenant ${{inputs.tenant}} $OPTS
