@@ -1,3 +1,7 @@
+# Legacy
+
+This repository is a legacy GitHub Action that is no longer maintained. It has been superseded by three improved actions in the [Kestra GitHub Actions repository](https://github.com/kestra-io/github-actions). Please use these actions for your CI/CD pipeline deploying Kestra flows and other actions.
+
 # Deploy Action
 
 Official GitHub Action to create a CI/CD pipeline that deploys [Flows](https://kestra.io/docs/workflow-components/flow) or [Namespace Files](https://kestra.io/docs/concepts/namespace-files) to your Kestra server.
