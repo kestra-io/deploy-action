@@ -1,6 +1,6 @@
 # Legacy
 
-This repository is a legacy GitHub Action that is no longer maintained. It has been superseded by three improved actions in the [Kestra GitHub Actions repository](https://github.com/kestra-io/github-actions). Please use these actions for your CI/CD pipeline deploying Kestra flows and other actions.
+This repository is a legacy GitHub Action that is no longer maintained. It has been superseded by [`kestra-io/deploy-namespace-files-action`](https://github.com/kestra-io/deploy-namespace-files-action) (for namespace files) and [`kestra-io/deploy-flows-action-v2`](https://github.com/kestra-io/deploy-flows-action-v2) (for flows). Please use those actions for your CI/CD pipeline instead.
 
 # Deploy Action
 
